@@ -1,0 +1,20 @@
+<div class="div-search"> 
+    <fieldset class="fieldset-search">
+        <legend><b>CA et Bénéfice</b></legend>
+            <form #searchVenteForm="ngForm" (ngSubmit)="searchVentesByType(searchVenteForm)">                     
+              <input name="minDate" class="search-input" type="text" required [(ngModel)]=minDate
+                [readonly]="disabledBackground" >
+              <input name="maxDate" class="search-input" type="text" required [(ngModel)]=maxDate [readonly]="disabledBackground" >
+              <input value="Chercher" class="search-submit-button" type=submit [disabled]="!searchVenteForm.form.valid"/>
+            </form>           
+                
+          <br/><br/>
+          <ng-container *ngIf="isNoResult && isFormSubmitted">
+              <span class="span-no-result">Pas de résultat</span>
+          </ng-container>
+          <ng-container *ngIf="!isNoResult && isFormSubmitted">
+              <span>Le CA de cette période est : {{CATotal}}</span>
+              <span> Le bénéfice de cette période est {{benefTotal}}</span>                  
+          </ng-container>
+      </fieldset>
+  </div>

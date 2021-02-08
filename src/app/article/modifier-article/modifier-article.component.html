@@ -1,0 +1,60 @@
+<h4>Ajoutez des articles achetés au stock ou retirez des articles vendus du stock</h4>
+
+<div class="row"> 
+        <div class="col-xs-4">  
+<form [formGroup]="achatForm" (ngSubmit)="onSaveAchat()">
+    <div class="form-group">
+    <input type="number" id="quantAchat" placeholder="Quantité achetée"
+            class="form-control" formControlName="quantAchat"><br>
+            <button class="btn btn-success" [disabled]="achatForm.invalid"
+            type="submit">Ajouter au stock
+    </button>       
+   
+  </div>    
+  </form></div>
+  
+  <div class="col-xs-4">
+  <form [formGroup]="venteForm" (ngSubmit)="onSaveVente()">
+        <div class="form-group">
+        <input type="number" id="quantVente" placeholder="Quantité vendue"
+                class="form-control" formControlName="quantVente"><br>
+                <button class="btn btn-success" [disabled]="venteForm.invalid"
+                type="submit">Retirer du stock
+        </button>       
+       
+      </div>    
+      </form></div></div>
+    
+      <br>
+  
+  <span>Quantité vendue totale : {{calcVenteTotal()}}  </span>
+  <span>Quantité disponible : {{article.stockArt}}</span>
+
+  <span>CA total de l'article : {{calcCATotal()}} </span>
+        <span>Bénéfice total sur l'article : {{calcBenefTotal()}}</span><br><br>
+  
+<h4>Indiquez le début et la fin de la période</h4>
+  <div *ngIf="activCalcul === false">
+  <form [formGroup]="dateForm" (ngSubmit)="calcVenteDate()">
+        <div class="form-group">  
+                <div class = "row" > 
+                        <div class="col-xs-4">  
+       <input type="date" id="dateVenteMin"
+                class="form-control" formControlName="dateVenteMin">  </div> 
+                <div class="col-xs-4">              
+         <input type="date" id="dateVenteMax"
+                class="form-control" formControlName="dateVenteMax"></div> 
+                <div class="col-xs-4">    
+                <button class="btn btn-success" [disabled]="dateForm.invalid"
+                type="submit">Afficher
+        </button> </div> </div>      
+      </div> 
+      
+      </form></div>
+
+      <div *ngIf="activCalcul === true"><p>Vendu pendant la période : {{total}}</p> 
+        <button class="btn btn-default" (click)="onNouvCalc()">Choisir une autre période</button>  
+</div>
+     
+
+    
