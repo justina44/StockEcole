@@ -1,0 +1,77 @@
+
+table{
+	border-collapse: collapse;
+	
+	
+}
+
+.header-table{
+	margin-bottom: 4em;
+	color:#ee7606e5;
+}
+
+th, td{
+	  padding-right: 4em;
+	  border-left: none;
+  	  border-right: none;
+  	  border-top: none;
+     
+}
+
+
+td{
+	padding-top: 0.8em;
+	border-bottom: 1px solid gray;
+
+}
+
+.td-no-border {
+	border: 0px;
+}
+
+
+button{
+	
+	border-radius: 4px; /* Rounded borders */
+	border: 0px; /* Gray Color border */
+  	height: 1.7em;
+ 	color: white;
+  	font-size: 16px;
+  	position: relative;
+  	
+}
+
+.commande-input{
+	width: 20%;
+	height: 2em;
+	margin-top: 2em;
+	margin-right: 1em;
+	margin-bottom: 1em;
+	border-radius: 4px; /* Rounded borders */
+  	border: 1px solid #ccc; /* Gray border */
+	position: absolute;
+	left: 20em;
+}
+
+
+
+
+.valid-button {
+	background-color: #42A948;
+	
+}
+
+.update-button {
+	background-color: wheat;
+	color: #ee7606e5;
+	
+}
+
+.delete-button {
+	background-color: #ee7606e5;
+}
+
+.back-button {
+	margin-top: 2em;
+	background-color: #ee7606e5;
+}

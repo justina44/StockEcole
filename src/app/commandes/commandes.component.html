@@ -1,0 +1,29 @@
+<app-message-modal *ngIf="displayMessageModal" [messageModal]="messageModal"></app-message-modal>
+
+<button class="commande-display-button"  type="submit" (click)="commandesVisibles()" >Visualiser les commandes  </button>  
+
+<table> 
+                     
+    <tr><th *ngFor="let head of headsTab">{{head}}</th>
+      </tr>   
+    <tr *ngFor="let article of articles | sortBy: 'asc': 'categorieArt'">
+      <td>{{article.libelArt}}</td>
+      <td>{{article.conditArtGros}} {{article.qteLot}}</td>
+      <td>{{article.categorieArt}}</td>
+        <td>{{article.comHebd}}</td>
+        <td>{{calculStockGros(article)}}</td>
+        <td>{{calculCommande(article)}}</td> 
+        <td><button class="commande-submit-button"  (click)="onCommande(article)">
+          <mat-icon>shopping_cart</mat-icon></button></td>    
+    </tr>
+  
+</table>
+
+
+
+
+
+
+
+
+  

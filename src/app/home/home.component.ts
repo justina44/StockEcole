@@ -37,15 +37,25 @@ export class HomeComponent implements OnInit {
      this.router.navigate(['/articles', 'view', id]);
    }
 
-   onChangeArticle(id: number) {
+   onStockArticle(id: number) {
     this.router.navigate(['/articles', 'change', id]);
+  }
+
+  onStatArticle(id: number) {
+    this.router.navigate(['/articles', 'stats', id]);
+  }
+
+  onUpdateArticle(id: number) {
+    this.router.navigate(['/articles', 'update', id]);
   }
 
   getColor(id: number) {
     if(this.articles[id].categorieArt === 'Boisson') {
-      return 'green';
-    } else  {
-      return 'red';
+      return 'red' ;
+    } else if (this.articles[id].categorieArt === 'Chocolat'){
+      return '#42A948';
+    } else if (this.articles[id].categorieArt === 'Bonbon'){
+      return '#ee7606e5';
     }
 }
 

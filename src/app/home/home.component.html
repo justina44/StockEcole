@@ -3,24 +3,34 @@
       <div class="list-group">
         <button
           class="list-group-item"
-          *ngFor="let article of articles; let i = index"
+          *ngFor="let article of articles ; let i = index"
           (click)="onViewArticle(i)">
           <h3 class="list-group-item-heading" [ngStyle]="{color: getColor(i)}">
             {{ article.libelArt }}
             <div
-            *ngIf="article.stockArt === 0"> <button class="btn btn-default pull-right" (click)="onDeleteArticle(article)">
-              <span class="glyphicon glyphicon-minus"></span>
+            *ngIf="article.stockArt === 0"> <button mat-button class="pull-right" (click)="onDeleteArticle(article)">
+              <mat-icon>delete</mat-icon>
+            </button></div>
+            <div> <button mat-button class="pull-right" (click)="onStatArticle(i)">
+              <mat-icon>search</mat-icon>
             </button></div>
             <div>
-            <button class="btn btn-default pull-right" (click)="onChangeArticle(i)">
-              <span class="glyphicon glyphicon-plus"></span>
+            <button mat-button class= "pull-right" (click)="onUpdateArticle(i)">
+              <mat-icon>update</mat-icon>
             </button></div>
+            <div>
+              <button mat-button class="pull-right" (click)="onStockArticle(i)">
+                <mat-icon>euro_symbol</mat-icon>
+              </button></div>
+             
+              
           </h3>
           <p class="list-group-item-text">{{ article.categorieArt }}</p>
-          <p class="list-group-item-text">Quantité disponible : {{article.stockArt}} </p>
+         
         </button>
       </div>
       </div>
+     
   </div>
 
   

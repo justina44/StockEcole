@@ -1,0 +1,58 @@
+
+.div-add-article{
+	margin-bottom: 2em;
+	text-align: left;
+	border: 10px solid white;
+	margin-left: 1em;
+	margin-right: 1em;
+	margin-top: 1em;
+	background-color: white;
+}
+
+.article-input{
+	width: 20%;
+	height: 2em;
+	margin-right: 1em;
+	margin-bottom: 1em;
+	border-radius: 4px; /* Rounded borders */
+  	border: 1px solid #ccc; /* Gray border */
+	position: absolute;
+	left: 20em;
+}
+
+
+
+.article-submit-button{
+	margin-top: 3px;
+	border-radius: 4px; /* Rounded borders */
+	background-color: #42A948; /* Rounded borders */
+  	border: 0px solid #ccc; /* Gray Color border */
+  	height: 1.7em;
+  	width: 5%;
+  	color: white;
+  	font-size: 20px;
+  	position: relative;
+  	left: 11em;
+}
+
+
+.cancel-button{
+	background-color: #ee7606e5;
+	margin-left: 3em;
+	margin-right: 1em;	 	
+}
+
+.back-button{	
+	background-color: wheat;	 	
+}
+
+.article-submit-button:hover {
+	cursor: pointer;
+}
+
+span{
+	
+	display: block;
+	
+}
+

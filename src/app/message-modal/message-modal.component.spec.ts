@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { VenteComponent } from './vente.component';
+import { MessageModalComponent } from './message-modal.component';
 
-describe('VenteComponent', () => {
-  let component: VenteComponent;
-  let fixture: ComponentFixture<VenteComponent>;
+describe('MessageModalComponent', () => {
+  let component: MessageModalComponent;
+  let fixture: ComponentFixture<MessageModalComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ VenteComponent ]
+      declarations: [ MessageModalComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(VenteComponent);
+    fixture = TestBed.createComponent(MessageModalComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

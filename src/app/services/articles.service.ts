@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import firebase from 'firebase';
 import { Subject } from 'rxjs';
 import { Article } from '../models/Article';
-import { StockComponent } from '../stock/stock.component';
 import DataSnapshot = firebase.database.DataSnapshot;
 
 

@@ -1,0 +1,27 @@
+
+    
+    <table>                  
+        <tr class="header-table"><th *ngFor="let head of headsTab2">{{head}}</th></tr>           
+        <tr *ngFor="let commande of commandes | commandeFilter:searchComDate; let i = index">
+          <td>{{commande.artVendu.libelArt}}</td>
+          <td>{{commande.quantCommande}}</td>
+          <td>{{commande.artVendu.conditArtGros}} de {{commande.nbUnitLot}}</td>
+          <td>{{commande.dateCommande |date: 'w'}}</td>
+          <div *ngIf="commande.isValid === false">
+          
+          <td class="td-no-border"><button class="valid-button" 
+            (click)="onValidCommande(commande, i)"> <mat-icon>euro_symbol</mat-icon>
+          </button></td> 
+          <td class="td-no-border"><button value="Update" class="update-button" (click)="onUpdateCommande(i)">
+            <mat-icon>update</mat-icon></button></td>
+          <td class="td-no-border"><button value="Delete" class="delete-button" (click)="onDeleteCommande(commande)">
+            <mat-icon>cancel</mat-icon></button></td>
+        </div>                      
+        </tr>
+   </table>
+  
+   <button class="back-button"  type="submit" (click)="onBackCom()" > 
+     <mat-icon>west</mat-icon> </button>  
+    
+    <input type="string" class="commande-input" placeholder="Recherche par article"
+    [(ngModel)]="searchComDate"/>

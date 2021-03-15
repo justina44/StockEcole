@@ -17,6 +17,8 @@ export class CreerArticleComponent implements OnInit {
   articles: Article[];
   articlesSubscription: Subscription;
   test: boolean;
+  messageModal: string;
+  displayMessageModal: boolean = false;
     
 
   constructor(private formBuilder: FormBuilder, private articlesService: ArticlesService,
@@ -36,21 +38,22 @@ export class CreerArticleComponent implements OnInit {
 
   initForm() {
     this.articleForm = this.formBuilder.group({
-      codeArt: ['', Validators.required],
       libelArt: ['', Validators.required],
       categorieArt: ['', Validators.required],
       conditArt: ['', Validators.required],
+      conditArtGros: [],
       prixAchat: ['', Validators.required],
       prixVente: ['', Validators.required],
+      comHebd: ['', Validators.required],
+      qteLot: ['', Validators.required]
      
-    });
-   
+    });   
   }
 
-  ifArtExiste(code: string): boolean{
+  ifArtExiste(nom: string): boolean{
     let test = this.test;
     this.articles.forEach(function (value) {
-       if (value.codeArt === code)
+       if (value.libelArt === nom)
        { 
        test = true;
         
@@ -62,30 +65,67 @@ export class CreerArticleComponent implements OnInit {
 
 
   onSaveArticle() {
-    const codeArt = this.articleForm.get('codeArt').value;
     const libelArt = this.articleForm.get('libelArt').value;
     const categorieArt = this.articleForm.get('categorieArt').value;
     const conditArt = this.articleForm.get('conditArt').value;
+    const conditArtGros = this.articleForm.get('conditArtGros').value;
     const prixAchat = this.articleForm.get('prixAchat').value;
     const prixVente = this.articleForm.get('prixVente').value;
+    const comHebd = this.articleForm.get('comHebd').value;
+    const qteLot = this.articleForm.get('qteLot').value;
+    if ((prixAchat<=0)||(prixVente<=0)||(comHebd<0)||(qteLot<1)) {
+      this.buildMessageModal(
+        'Les prix doivent être au-dessus de zéro, la quantité de lot est au moins égale à 1,' 
+           + 'le stock hebdo ne peut pas être négative');
+    }
+    else { 
     const stockArt = 0;
     const newArticle = new Article();
-    newArticle.codeArt = codeArt;
     newArticle.libelArt = libelArt;
     newArticle.categorieArt = categorieArt;
     newArticle.conditArt = conditArt;
+    newArticle.conditArtGros = conditArtGros;
     newArticle.stockArt = stockArt;
-    newArticle.prixAchat = prixAchat;
-    newArticle.prixVente = prixVente;
-    this.test = this.ifArtExiste(newArticle.codeArt);
+    newArticle.isCdeValid = true;
+    newArticle.prixAchat = this.arrondir(prixAchat);
+    newArticle.prixVente = this.arrondir(prixVente);
+    newArticle.comHebd = this.arrondirEnt(comHebd);
+    newArticle.qteLot = this.arrondirEnt(qteLot);
+    if (this.articles.length>0) { 
+    newArticle.idArt = this.articles[(this.articles.length - 1)].idArt + 1;
+  } else  {
+    newArticle.idArt = 0};
+    this.test = this.ifArtExiste(newArticle.libelArt);
       if (this.test) {
-      console.log("cette article existe déjà");
+        this.buildMessageModal('Article avec ce nom existe déjà');
     }
     else { 
     this.articlesService.createNewArticle(newArticle);    
     this.router.navigate(['/articles']);
   }
+}
         
   }
+
+  arrondir(nombre: number) { 
+    let arrondi = nombre*100;         
+    arrondi = Math.round(arrondi); 
+    arrondi = arrondi/100;  
+    return arrondi;      
+  }
+
+  arrondirEnt(nombre: number) {          
+    let arrondi = Math.round(nombre);    
+    return arrondi;      
+  }
+
+  buildMessageModal(msg: string){
+    this.messageModal = msg;
+    this.displayMessageModal = true;
+}
+
+onBack() {
+  this.router.navigate(['/articles']);
+}
  
 }

@@ -1,60 +1,78 @@
-<h4>Ajoutez des articles achetés au stock ou retirez des articles vendus du stock</h4>
+<app-message-modal *ngIf="displayMessageModal" [messageModal]="messageModal"></app-message-modal>
 
-<div class="row"> 
-        <div class="col-xs-4">  
-<form [formGroup]="achatForm" (ngSubmit)="onSaveAchat()">
-    <div class="form-group">
-    <input type="number" id="quantAchat" placeholder="Quantité achetée"
-            class="form-control" formControlName="quantAchat"><br>
-            <button class="btn btn-success" [disabled]="achatForm.invalid"
-            type="submit">Ajouter au stock
-    </button>       
-   
-  </div>    
-  </form></div>
-  
-  <div class="col-xs-4">
-  <form [formGroup]="venteForm" (ngSubmit)="onSaveVente()">
-        <div class="form-group">
-        <input type="number" id="quantVente" placeholder="Quantité vendue"
-                class="form-control" formControlName="quantVente"><br>
-                <button class="btn btn-success" [disabled]="venteForm.invalid"
-                type="submit">Retirer du stock
-        </button>       
-       
-      </div>    
-      </form></div></div>
-    
-      <br>
-  
-  <span>Quantité vendue totale : {{calcVenteTotal()}}  </span>
-  <span>Quantité disponible : {{article.stockArt}}</span>
+<button class="cancel-button" (click)="onBack()">
+    <mat-icon>home</mat-icon>
+</button>
+<button class="det-button" (click)="onArtDet(article.idArt)">
+    <mat-icon>west</mat-icon>
+</button>
+<button class="cancel-button" (click)="onCommande()">
+    <mat-icon>shopping_cart</mat-icon>
+</button>
+<br><br>
 
-  <span>CA total de l'article : {{calcCATotal()}} </span>
-        <span>Bénéfice total sur l'article : {{calcBenefTotal()}}</span><br><br>
-  
-<h4>Indiquez le début et la fin de la période</h4>
-  <div *ngIf="activCalcul === false">
-  <form [formGroup]="dateForm" (ngSubmit)="calcVenteDate()">
-        <div class="form-group">  
-                <div class = "row" > 
-                        <div class="col-xs-4">  
-       <input type="date" id="dateVenteMin"
-                class="form-control" formControlName="dateVenteMin">  </div> 
-                <div class="col-xs-4">              
-         <input type="date" id="dateVenteMax"
-                class="form-control" formControlName="dateVenteMax"></div> 
-                <div class="col-xs-4">    
-                <button class="btn btn-success" [disabled]="dateForm.invalid"
-                type="submit">Afficher
-        </button> </div> </div>      
-      </div> 
-      
-      </form></div>
+<span class="bold">Achat de l'article "{{article.libelArt}}"</span>
+<br><br>
+<div class="row">
 
-      <div *ngIf="activCalcul === true"><p>Vendu pendant la période : {{total}}</p> 
-        <button class="btn btn-default" (click)="onNouvCalc()">Choisir une autre période</button>  
+    <div class="col-xs-4">
+        <p class="soustitre">En gros</p>
+        <form [formGroup]="achatFormGros" (ngSubmit)="onAchat()">
+            <div class="form-group">
+                <input type="number" id="quantAchatGros" placeholder="Quantité achetée ({{article.comHebd}}?)"
+                    class="form-control" formControlName="quantAchatGros"><br>
+                <button class="article-submit-button" type=submit [disabled]="achatFormGros.invalid">
+                    <mat-icon>done</mat-icon>
+                </button>
+            </div>
+        </form>
+    </div>
+    <div class="col-xs-4">
+        <p class="soustitre">En détail</p>
+        <form [formGroup]="achatFormDet" (ngSubmit)="onAchat()">
+            <div class="form-group">
+                <input type="number" id="quantAchatDet" placeholder="Quantité achetée" class="form-control"
+                    formControlName="quantAchatDet"><br>
+                <button class="article-submit-button" type=submit [disabled]="achatFormDet.invalid">
+                    <mat-icon>done</mat-icon>
+                </button>
+            </div>
+        </form>
+    </div>
 </div>
-     
+<br>
+<span class="bold">Vente de l'article "{{article.libelArt}}"</span>
+<br><br>
+<div class="row">
+    <div class="col-xs-4">
+        <p class="soustitre">En gros</p>
+        <form [formGroup]="venteFormGros" (ngSubmit)="onVente()">
+            <div class="form-group">
+                <input type="number" id="prixVenteGros" placeholder="Vendu au prix" class="form-control"
+                    formControlName="prixVenteGros"><br>
+                <input type="number" id="quantVenteGros" placeholder="Quantité vendue" class="form-control"
+                    formControlName="quantVenteGros"><br>
+                <button class="article-submit-button" type=submit [disabled]="venteFormGros.invalid">
+                    <mat-icon>done</mat-icon>
+                </button>
 
-    
+            </div>
+        </form>
+    </div>
+
+    <div class="col-xs-4">
+        <p class="soustitre">En détail</p>
+        <form [formGroup]="venteFormDet" (ngSubmit)="onVente()">
+            <div class="form-group">
+                <input type="number" id="prixVenteDet" placeholder="Vendu au prix" class="form-control"
+                    formControlName="prixVenteDet"><br>
+                <input type="number" id="quantVenteDet" placeholder="Quantité vendue" class="form-control"
+                    formControlName="quantVenteDet"><br>
+                <button class="article-submit-button" type=submit [disabled]="venteFormDet.invalid">
+                    <mat-icon>done</mat-icon>
+                </button>
+
+            </div>
+        </form>
+    </div>
+</div>

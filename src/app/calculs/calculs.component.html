@@ -1,0 +1,69 @@
+<span><button class="cancel-button pull-left" (click)="onBack()">
+    <mat-icon>home</mat-icon>
+  </button>
+  <button class="back-button" type="submit" (click)="onArtDet(article.idArt)">
+    <mat-icon>west</mat-icon>
+  </button></span> <br><br>
+
+<div class="row">
+  <div class="col-xs-6">
+    <h4>CA et Bénéfice pour tous les articles </h4>
+
+    <form [formGroup]="dateForm" (ngSubmit)="afficher()">
+      <div class="form-group">
+        <label for="dateVenteMin">Du :</label>
+        <input type="date" id="dateVenteMin" class="form-control" formControlName="dateVenteMin">
+      </div>
+      <div class="form-group">
+        <label for="dateVenteMax">Au :</label>
+        <input type="date" id="dateVenteMax" class="form-control" formControlName="dateVenteMax">
+      </div>
+
+      <button class="request-submit-button" [disabled]="dateForm.invalid" type="submit">
+        Consulter</button>
+    </form> <br><br>
+
+    <ng-container *ngIf="isFormSubmitted">
+      <table>
+        <tr>
+          <th *ngFor="let head of headsTab">{{head}}</th>
+        </tr>
+        <tr *ngFor="let article of articles; let i = index">
+          <td><span [ngStyle]="{color: getColor(i)}">{{article.libelArt}}</span></td>
+          <td>{{article.categorieArt}}</td>
+          <td>{{calcCA(article.idArt)}}</td>
+          <td>{{calcBen(article.idArt)}}</td>
+        </tr>
+      </table>
+      <button class="back-button fermer-button" (click)="onNouvCalc()">Fermer</button>
+    </ng-container>
+  </div>
+  <div class="col-xs-6">
+    <h4>Quantités vendues de {{article.libelArt}} </h4>
+    <div *ngIf="activCalcul === false">
+      <form [formGroup]="dateForm2" (ngSubmit)="calcVenteDate()">
+        <div class="form-group">
+
+          <label for="dateVenteMin">Du :</label>
+          <input type="date" id="dateVenteMin" class="form-control" formControlName="dateVenteMin">
+
+        </div>
+        <div class="form-group">
+
+          <label for="dateVenteMax">Au :</label>
+          <input type="date" id="dateVenteMax" class="form-control" formControlName="dateVenteMax">
+        </div>
+        <button class="request-submit-button" [disabled]="dateForm2.invalid" type="submit">Consulter
+        </button>
+
+      </form>
+    </div>
+    <div *ngIf="activCalcul === true">
+      <p>Vendu en détail pendant la période :
+        {{total}} unités</p>
+      <p>
+        Conditionnement : {{article.conditArtGros}} de {{article.qteLot}}</p>
+      <button class="back-button" (click)="onNouvCalc()">Fermer</button>
+    </div>
+  </div>
+</div>

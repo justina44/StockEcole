@@ -1,0 +1,66 @@
+table{
+	border-collapse: collapse;
+}
+
+th, td{
+	  padding-right: 4em;
+	  border-left: none;
+  	  border-right: none;
+  	  border-top: none;
+}
+
+
+
+td{
+	padding-top: 0.8em;
+	border-bottom: 1px solid gray;
+	width: 11%;
+}
+
+
+.request-submit-button{
+	
+	margin-top: 2em;
+	border-radius: 4px; /* Rounded borders */
+	background-color: #42A948; /* Rounded borders */
+  	border: 1px solid #ccc; /* Gray Color border */
+  	height: 1.7em;
+  	color: white;
+  	font-size: 15px;
+  	position: relative;
+  	left: 10em;
+}
+
+h4 {
+	color: #42A948;
+	font-weight:bold;
+}
+
+.cancel-button{
+	
+    background-color: wheat;
+	margin-right:2em;
+    left: 15em;  	
+}
+
+.back-button{
+	
+    background-color: #ee7606e5;
+	left: 20em;  
+	margin-left: 3em;	
+}
+
+.fermer-button{
+	margin-top: 2em;
+	margin-bottom: 2em;
+    
+}
+
+.request-submit-button:hover, .clear-form-button:hover{
+	cursor: pointer;
+}
+
+span{
+	display: block;
+	
+}

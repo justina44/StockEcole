@@ -1,0 +1,58 @@
+
+input{
+	width: 20em;
+	margin-left: 15em;
+}
+
+.prix-input{
+	width: 20%;
+	height: 2em;
+	margin: 2em;
+	border-radius: 4px; /* Rounded borders */
+  	border: 1px solid #ccc; /* Gray border */
+	position: absolute;
+	left: 20em;
+}
+
+
+
+
+.prix-submit-button{
+	border-radius: 4px; /* Rounded borders */
+	background-color: #42A948; /* Rounded borders */
+  	border: 1px solid #ccc; /* Gray Color border */
+  	height: 1,5em;
+  	width: 5%;
+  	color: white;
+  	font-size: 20px;
+  	position: relative;
+	left: 10em;
+  	
+}
+
+
+.cancel-button{
+	
+	background-color: #ee7606e5;
+	position: relative;
+	left: 12em;
+	border: 0px;
+	 	
+}
+
+span{
+	display: block;
+	margin-top: 2em;
+	margin-left: 15em;
+}
+
+button {
+    margin: 3em;
+}
+
+h4 { 
+color: #42A948;
+font-weight: 10;
+left: 20em;
+
+}

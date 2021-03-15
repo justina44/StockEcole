@@ -1,0 +1,27 @@
+<app-message-modal *ngIf="displayMessageModal" [messageModal]="messageModal"></app-message-modal>
+<span>
+  <h4>Quantité réélle rentrée en stock</h4>
+</span>
+<div>
+  <form [formGroup]="updateCommandeForm" (ngSubmit)="onUpdateCom()">
+    <div>
+      <input type="number" id="quantCom" placeholder="Nouvelle quantité" class="form-control"
+        formControlName="quantCom">
+    </div>
+    <br>
+    <div>
+      <input type="number" id="quantLot" placeholder="Nombre d'unités dans un lot" class="form-control"
+        formControlName="quantLot">
+    </div>
+
+
+    
+      <button class="prix-submit-button" type=submit [disabled]="updateCommandeForm.invalid">
+        <mat-icon>done</mat-icon>
+      </button>
+      <button class="cancel-button" (click)="onBack()">
+        <mat-icon>west</mat-icon>
+      </button>
+
+  </form>
+</div>

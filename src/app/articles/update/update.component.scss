@@ -1,27 +1,23 @@
 
 
 .article-submit-button{
-	margin-right: 1em;
+	
 	border-radius: 4px; /* Rounded borders */
 	background-color: #42A948; /* Rounded borders */
   	border: 1px solid #ccc; /* Gray Color border */
   	height: 1.7em;
-  	width: 7%;
+  	width: 20%;
   	color: white;
   	font-size: 20px;
   	position: relative;
-  	
+  	left: 3em;
 }
 
 
-.sell-button{
-	background-color: wheat;
-	  	
-}
-
-.home-button{
+.cancel-button{
+	margin-left: 5em;
 	background-color: #ee7606e5;
-	 
+	  	
 }
 
 .article-submit-button:hover, .clear-form-button:hover{
@@ -32,3 +28,11 @@ span{
 	display: block;
 	
 }
+
+h4{
+	color: #42A948;
+	font-weight: bold;
+	margin-left:5em;
+	margin-bottom: 2em;
+}
+

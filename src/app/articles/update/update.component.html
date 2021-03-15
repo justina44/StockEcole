@@ -1,0 +1,38 @@
+<app-message-modal *ngIf="displayMessageModal" [messageModal]="messageModal"></app-message-modal>
+
+<h4>Modification de l'article {{article.libelArt}}</h4>
+<div class="col-xs-4">
+    <form [formGroup]="updateArticleForm" (ngSubmit)="onUpdateArticle()">
+        <div class="form-group">
+            <div class="form-group">
+                <input type="text" id="condDetNouv" placeholder="Vendu par" class="form-control"
+                    formControlName="condDetNouv">
+            </div>
+            <div class="form-group">
+                <input type="text" id="condGrosNouv" placeholder="Acheté par" class="form-control"
+                    formControlName="condGrosNouv">
+            </div>
+            <input type="number" id="prixVenteNouv" placeholder="Prix de vente (unité)" class="form-control"
+                formControlName="prixVenteNouv">
+        </div>
+        <div class="form-group">
+            <input type="number" id="prixAchatNouv" placeholder="Prix d'achat (lot)" class="form-control"
+                formControlName="prixAchatNouv">
+        </div>
+        <div class="form-group">
+            <input type="number" id="qteLotNouv" placeholder="Quantité en lot" class="form-control"
+                formControlName="qteLotNouv">
+        </div>
+        <div class="form-group">
+            <input type="text" id="stockMaxNouv" placeholder="Stock maximal" class="form-control"
+                formControlName="stockMaxNouv">
+        </div><br>
+        <span><button class="article-submit-button" type="submit" [disabled]="updateArticleForm.invalid">
+                <mat-icon>done</mat-icon>
+            </button>
+            <button class="article-submit-button cancel-button" (click)="onBack()">
+                <mat-icon>close</mat-icon>
+            </button></span>
+
+    </form>
+</div>

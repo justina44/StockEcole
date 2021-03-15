@@ -1,14 +1,24 @@
 <div class="row">
     <div class="col-xs-12">
-      <h2>{{ article.libelArt }}</h2>
+      <h2 [ngStyle]="{color: getColor()}">{{ article.libelArt }}</h2>
       <p>Catégorie : {{ article.categorieArt }}</p>
-      <p>Conditionnement : {{ article.conditArt }}</p>
-      <p>Code d'article : {{ article.codeArt }}</p>
-      <p>Prix d'achat : {{ article.prixAchat }}</p>
-      <p>Prix de vente : {{ article.prixVente }}</p>
+      <p>Conditionnement :{{ article.conditArt }} - {{article.conditArtGros}} de {{article.qteLot}}</p>
+      <p>Prix d'achat de {{article.conditArtGros}} : {{ article.prixAchat }}</p>
+      <p>Prix de vente de l'unité: {{ article.prixVente }}</p>
+       <p>Quantité disponible en détail : {{article.stockArt}}</p>
+       <p>Quantité disponible en gros : {{calcQteGros()}} de {{article.qteLot}}</p>
+      <p>Quantité vendue totale : {{calcVenteTotal()}} de {{article.qteLot}} </p>
+   <span>CA/Bénéfice total de l'article : {{calcCATotal()}} € / {{calcBenefTotal()}} €</span>
+    <br><br>    
+    <span> <button class="article-submit-button home-button" (click)="onBack()"> <mat-icon>home</mat-icon></button>
      
+        <button class="article-submit-button" (click)="onStatArticle(article.idArt)">
+          <mat-icon>search</mat-icon>
+        </button>
       
-     
-      <button class="btn btn-default" (click)="onBack()">Retour</button>
+          <button class="article-submit-button sell-button"  (click)="onAcheterVendre(article.idArt)">
+          <mat-icon>euro_symbol</mat-icon>
+          </button></span>
+
     </div>
   </div>

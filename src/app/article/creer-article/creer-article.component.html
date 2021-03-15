@@ -1,53 +1,77 @@
+<app-message-modal *ngIf="displayMessageModal" [messageModal]="messageModal"></app-message-modal>
+
 <div class="row">
-    <div class="col-sm-8 col-sm-offset-2">
-      <h3>Nouvel article</h3>
+    <div class="div-add-article">
+     <fieldset>
       <form [formGroup]="articleForm" (ngSubmit)="onSaveArticle()">
-        <div class="form-group">
-          <label for="codeArt">Code d'article</label>
-          <input type="text" id="codeArt"
-                 class="form-control" formControlName="codeArt">
-        </div>
+        
 
         <div class="form-group">
             <label for="libelArt">Libellé d'article</label>
             <input type="text" id="libelArt"
-                   class="form-control" formControlName="libelArt">
+                   class="article-input" formControlName="libelArt">
           </div>
 
           <div class="form-group">
             <label for="categorieArt">Catégorie</label>
-            <select id="categorieArt" class="form-control" formControlName="categorieArt" >
+            <select id="categorieArt" class="article-input" formControlName="categorieArt" >
               <option  value="Boisson">Boisson</option>
-              <option  value="Biscuit">Biscuit</option>
-              <option  value="Bonbon">Bonbon</option></select>
+              <option  value="Chocolat">Barre chocolat</option>
+              <option  value="Bonbon">Confiserie</option>
+              <option  value="Liquide">Liquide</option></select>
                      
           </div>
           
           
           <div class="form-group">
-            <label for="conditArt">Conditionnement</label>
+            <label for="conditArt">Condit de détail</label>
             <input type="text" id="conditArt"
-                   class="form-control" formControlName="conditArt">
+                   class="article-input" formControlName="conditArt">
           </div>
 
           <div class="form-group">
-            <label for="prixAchat">Prix d'achat</label>
+            <label for="conditArt">Condit de gros</label>
+            <input type="text" id="conditArtGros"
+                   class="article-input" formControlName="conditArtGros">
+          </div>
+
+          <div class="form-group">
+            <label for="prixAchat">Prix d'achat (lot)</label>
             <input type="number" id="prixAchat"
-                   class="form-control" formControlName="prixAchat" ng-pattern="/^[0-9]+(.[0-9]{1,2})?$/" step="0.01">
+                   class="article-input" formControlName="prixAchat" ng-pattern="/^[0-9]+(.[0-9]{1,2})?$/" step="0.01">
           </div>
   
           <div class="form-group">
-            <label for="prixVente">Prix de vente</label>
+            <label for="prixVente">Prix de vente (unité)</label>
             <input type="number" id="prixVente"
-                   class="form-control" formControlName="prixVente" ng-pattern="/^[0-9]+(.[0-9]{1,2})?$/" step="0.01">
+                   class="article-input" formControlName="prixVente" ng-pattern="/^[0-9]+(.[0-9]{1,2})?$/" step="0.01">
           </div>
 
-         
+          <div class="form-group">
+            <label for="qteLot">Nombre dans le lot</label>
+            <input type="number" id="qteLot"
+                   class="article-input" formControlName="qteLot" ng-pattern="/^[0-9]+(.[0-9]{1,2})?$/" step="0.01">
+          </div>
 
-        <button class="btn btn-success" [disabled]="articleForm.invalid"
-              type="submit">Enregistrer
+          <div class="form-group">
+            <label for="comHebd">Niveau de stock</label>
+            <input type="number" id="comHebd"
+                   class="article-input" formControlName="comHebd" ng-pattern="/^[0-9]+(.[0-9]{1,2})?$/" step="0.01">
+          </div>         
+
+       <span><button  class="article-submit-button" [disabled]="articleForm.invalid" 
+         type="submit"><mat-icon>done</mat-icon>
       </button>
+      
+      <button class="article-submit-button cancel-button" (click)="articleForm.reset()">
+        <mat-icon>clear</mat-icon></button>
+
+        <button class="article-submit-button back-button" (click)="onBack()"><mat-icon>home</mat-icon></button>
+        </span>
     </form>
+    
+  </fieldset>
   </div>
+
 </div>
 
